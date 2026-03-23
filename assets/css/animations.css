@@ -1,0 +1,75 @@
+/* Animation Utility Classes */
+.animate-fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.animate-fade-in {
+    opacity: 0;
+}
+
+.img-reveal {
+    overflow: hidden;
+    position: relative;
+    border-radius: var(--radius);
+}
+
+.img-reveal img {
+    transform: scale(1.1);
+    transition: transform 1.5s ease;
+}
+
+.img-reveal.is-revealed img {
+    transform: scale(1);
+}
+
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+}
+
+/* Feature Icon wrapper */
+.icon-wrapper {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: rgba(37, 109, 133, 0.1);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    transition: var(--transition);
+}
+
+[data-theme="dark"] .icon-wrapper {
+    background-color: rgba(251, 191, 36, 0.1);
+    color: var(--accent);
+}
+
+.glass-card:hover .icon-wrapper {
+    background-color: var(--primary);
+    color: #fff;
+    transform: scale(1.1);
+}
+
+[data-theme="dark"] .glass-card:hover .icon-wrapper {
+    background-color: var(--accent);
+    color: #162032;
+}
+
+/* Page Header animation */
+.page-header {
+    background: linear-gradient(135deg, rgba(37,109,133,0.1) 0%, rgba(245,158,11,0.05) 100%);
+    padding: 80px 0;
+    border-radius: 0 0 40px 40px;
+    margin-bottom: 60px;
+}
+
+[data-theme="dark"] .page-header {
+    background: linear-gradient(135deg, rgba(37,109,133,0.2) 0%, rgba(251,191,36,0.1) 100%);
+}
