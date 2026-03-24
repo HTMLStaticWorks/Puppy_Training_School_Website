@@ -32,11 +32,12 @@
                 <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
                 <li class="nav-item"><a href="programs.html" class="nav-link">Programs</a></li>
+                <li class="nav-item"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
                 <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
             
-            <div class="nav-actions">
+            <div class="nav-actions"><button id="rtl-toggle" class="rtl-toggle-btn">AR</button>
                 <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
                     <i class="fa-solid fa-moon dark-icon"></i>
                     <i class="fa-solid fa-sun light-icon"></i>
@@ -67,7 +68,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="img-reveal rounded-4">
-                            <img src="https://images.unsplash.com/photo-1587300003388-59208cb962cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Puppy Training" class="w-100" style="height: 550px; object-fit: cover; border-radius: 24px;">
+                            <img src="assets/images/hero-puppy.png" alt="Puppy Training" class="w-100" style="height: 550px; object-fit: cover; border-radius: 24px;">
                         </div>
                     </div>
                 </div>
@@ -86,11 +87,9 @@
                     <div class="col-lg-4 col-md-6 stagger-item">
                         <div class="glass-card">
                             <div class="icon-wrapper">
-                                <i class="fa-solid fa-house-chimney-dog"></i>
+                                <i class="fa-solid fa-house-chimney"></i>
                             </div>
-                            <h3>House Training</h3>
-                            <p>Establish reliable potty routines and prevent destructive chewing with positive reinforcement techniques inside your home.</p>
-                            <a href="service-details.html" class="btn btn-outline mt-3" style="padding: 8px 20px;">Learn More</a>
+                            <h3>House Training</h3><p>Establish reliable potty routines and prevent destructive chewing with positive reinforcement techniques inside your home.</p><a href="service-details-1.html" class="btn btn-outline mt-3" style="padding: 8px 20px;">Learn More</a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 stagger-item">
@@ -111,6 +110,70 @@
                             <h3>Behavior Correction</h3>
                             <p>Effective, compassionate methods to stop jumping, biting, excessive barking, and separation anxiety.</p>
                             <a href="services.html" class="btn btn-outline mt-3" style="padding: 8px 20px;">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Why In-Home Training -->
+        <section class="section-padding" style="background-color: var(--surface-color);">
+            <div class="container">
+                <div class="row align-items-center gy-5">
+                    <div class="col-lg-6 animate-fade-up">
+                        <span style="color: var(--primary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">The In-Home Advantage</span>
+                        <h2 class="mt-2" style="font-size: 2.5rem; margin-bottom: 1.5rem;">Why Training at <span style="color: var(--accent);">Home</span> Works Best</h2>
+                        <p style="font-size: 1.1rem; margin-bottom: 2rem; color: var(--text-secondary);">Traditional training classes can be overwhelming and distracting. In-home training allows your puppy to learn where they actually live, ensuring commands translate to real-life situations.</p>
+                        
+                        <div class="row gy-4">
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-start">
+                                    <div class="icon-wrapper" style="width: 40px; height: 40px; min-width: 40px; font-size: 1rem; margin-right: 15px; margin-bottom: 0;">
+                                        <i class="fa-solid fa-couch"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">Natural Environment</h5>
+                                        <p class="text-secondary" style="font-size: 0.9rem;">No commute stress; learning in their comfort zone.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-start">
+                                    <div class="icon-wrapper" style="width: 40px; height: 40px; min-width: 40px; font-size: 1rem; margin-right: 15px; margin-bottom: 0;">
+                                        <i class="fa-solid fa-bullseye"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">High Engagement</h5>
+                                        <p class="text-secondary" style="font-size: 0.9rem;">100% focused attention from our expert trainers.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-start">
+                                    <div class="icon-wrapper" style="width: 40px; height: 40px; min-width: 40px; font-size: 1rem; margin-right: 15px; margin-bottom: 0;">
+                                        <i class="fa-solid fa-gear"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">Tailored Setup</h5>
+                                        <p class="text-secondary" style="font-size: 0.9rem;">Solutions designed for your specific floor plan.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-start">
+                                    <div class="icon-wrapper" style="width: 40px; height: 40px; min-width: 40px; font-size: 1rem; margin-right: 15px; margin-bottom: 0;">
+                                        <i class="fa-solid fa-users-viewfinder"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-1">Family Involvement</h5>
+                                        <p class="text-secondary" style="font-size: 0.9rem;">Whole family learns to communicate consistently.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="img-reveal rounded-4">
+                            <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Training at home" class="w-100" style="height: 500px; object-fit: cover; border-radius: 24px;">
                         </div>
                     </div>
                 </div>
@@ -214,11 +277,11 @@
         </section>
     </main>
 
-    <footer class="footer">
+            <footer class="footer">
         <div class="container">
             <div class="row gy-4">
                 <div class="col-lg-4 col-md-6 footer-col">
-                    <a href="index.html" class="nav-logo mb-3 d-inline-flex" style="text-decoration:none;">
+                    <a href="index.html" class="nav-logo mb-3">
                         <i class="fa-solid fa-paw"></i> PuppySchool
                     </a>
                     <p>We build positive and lasting relationships between you and your puppy through premium in-home training.</p>

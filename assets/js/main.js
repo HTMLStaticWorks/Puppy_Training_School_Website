@@ -2,11 +2,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
+    const navActions = document.querySelector('.nav-actions');
     
     if (hamburger && navLinks) {
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             
+            // Move actions into nav-links only on mobile
+            if (window.innerWidth <= 1024 && navActions) {
+                if(navLinks.classList.contains('active')) {
+                    navLinks.appendChild(navActions);
+                    navActions.style.display = 'flex';
+                }
+            }
+
             const icon = hamburger.querySelector('i');
             if(icon) {
                 if(navLinks.classList.contains('active')) {
@@ -20,6 +29,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Dropdown toggle for mobile
+    const dropdowns = document.querySelectorAll('.dropdown');
+    dropdowns.forEach(dd => {
+        const link = dd.querySelector('.nav-link');
+        link.addEventListener('click', (e) => {
+            if (window.innerWidth <= 1024) {
+                e.preventDefault();
+                dd.classList.toggle('open');
+            }
+        });
+    });
+
     // Active nav link
     const currentPath = window.location.pathname;
     const navItems = document.querySelectorAll('.nav-link');
@@ -32,4 +53,31 @@ document.addEventListener('DOMContentLoaded', () => {
             item.classList.add('active');
         }
     });
+
+    // RTL Toggle Logic
+    const rtlToggle = document.getElementById('rtl-toggle');
+    const htmlTag = document.documentElement;
+
+    // Check for saved preference
+    const currentDir = localStorage.getItem('direction') || 'ltr';
+    htmlTag.setAttribute('dir', currentDir);
+    if(rtlToggle) {
+        rtlToggle.textContent = currentDir === 'ltr' ? 'AR' : 'EN';
+    }
+
+    if (rtlToggle) {
+        rtlToggle.addEventListener('click', () => {
+            const isRTL = htmlTag.getAttribute('dir') === 'rtl';
+            const newDir = isRTL ? 'ltr' : 'rtl';
+            
+            htmlTag.setAttribute('dir', newDir);
+            localStorage.setItem('direction', newDir);
+            rtlToggle.textContent = newDir === 'ltr' ? 'AR' : 'EN';
+
+            if(typeof gsap !== 'undefined') {
+                gsap.from("body", { opacity: 0, duration: 0.5 });
+            }
+        });
+    }
 });
+

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Puppy Training School</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <style>
+        .dashboard-container {
+            padding: 80px 0;
+            background: var(--bg-color);
+        }
+        .dashboard-sidebar {
+            position: sticky;
+            top: 100px;
+        }
+        .progress-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: conic-gradient(var(--primary) 75%, var(--border-color) 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            position: relative;
+        }
+        .progress-circle::after {
+            content: "75%";
+            width: 100px;
+            height: 100px;
+            background: var(--surface-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .stat-card {
+            text-align: center;
+            padding: 1rem;
+        }
+        .video-upload-area {
+            border: 2px dashed var(--border-color);
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+            background: rgba(37, 109, 133, 0.05);
+            cursor: pointer;
+        }
+        .video-upload-area:hover {
+            border-color: var(--primary);
+            background: rgba(37, 109, 133, 0.1);
+        }
+        .tip-item {
+            display: flex;
+            gap: 1rem;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        .tip-item:last-child { border-bottom: none; }
+        .tip-item:hover { background: rgba(37, 109, 133, 0.05); }
+
+        .list-group-item {
+            display: block;
+            padding: 0.875rem 1.25rem;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        .list-group-item:hover {
+            background: rgba(37, 109, 133, 0.05);
+            color: var(--primary);
+            padding-left: 1.75rem;
+        }
+        .list-group-item.active {
+            background: rgba(37, 109, 133, 0.1);
+            color: var(--primary);
+            border-left: 4px solid var(--primary);
+        }
+
+        .dashboard-container .glass-card {
+            padding: 1rem;
+            height: auto !important;
+            min-height: auto !important;
+            display: block; /* Change from flex column to block to avoid unintended stretching from child flex items */
+        }
+
+        .dashboard-sidebar .glass-card.p-0 {
+            padding: 0;
+        }
+
+        .sidebar-toggle-btn {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 14px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 1.5rem;
+        }
+
+        .sidebar-toggle-btn:hover {
+            box-shadow: var(--shadow);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 991.98px) {
+            .dashboard-sidebar {
+                display: none;
+            }
+            .dashboard-sidebar.active {
+                display: block;
+                animation: sideFadeIn 0.3s ease-out;
+            }
+            .nav-actions {
+                display: flex !important;
+                border-top: none !important;
+                margin-top: 0 !important;
+                padding-top: 0 !important;
+                width: auto !important;
+                gap: 8px !important;
+            }
+        }
+
+        .sidebar-icon-btn {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .sidebar-icon-btn:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        @keyframes sideFadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .text-danger {
+            color: #ef4444 !important;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar" style="border-bottom: 2px solid var(--border-color);">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="index.html" class="nav-logo">
+                <i class="fa-solid fa-paw"></i> PuppySchool
+            </a>
+            <div class="nav-actions">
+                <button id="header-sidebar-toggle" class="sidebar-icon-btn d-lg-none" aria-label="Toggle Sidebar">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="dashboard-container">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-lg-3">
+                    <div class="dashboard-sidebar" id="sidebar-menu">
+                        <div class="glass-card mb-4 text-center">
+                            <div style="width: 80px; height: 80px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1rem; border: 4px solid var(--surface-color); box-shadow: var(--shadow);">JS</div>
+                            <h3 style="margin-bottom: 0.25rem;">James Smith</h3>
+                            <p class="text-secondary" style="font-size: 0.9rem;">Member since Oct 2026</p>
+                            <span class="badge" style="background: rgba(245, 158, 11, 0.1); color: var(--accent); padding: 4px 12px; border-radius: 20px;">Premium Member</span>
+                        </div>
+                        
+                        <div class="glass-card p-0 overflow-hidden">
+                            <div class="list-group">
+                                <a href="#overview" class="list-group-item active">Overview</a>
+                                <a href="#booking" class="list-group-item">Book a Session</a>
+                                <a href="#progress" class="list-group-item">Training Progress</a>
+                                <a href="#tips" class="list-group-item">Tips Library</a>
+                                <a href="login.html" class="list-group-item text-danger" style="border-top: 1px solid var(--border-color);"><i class="fa-solid fa-right-from-bracket me-2"></i> Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-9">
+                    <div id="overview" class="glass-card mb-4 animate-fade-up">
+                        <div class="row align-items-center">
+                            <div class="col-md-4 text-center">
+                                <div class="progress-circle"></div>
+                                <h4 class="mb-1">Foundations</h4>
+                                <p class="text-secondary">Level 1 Complete</p>
+                            </div>
+                            <div class="col-md-8">
+                                <h2 style="margin-bottom: 1rem;">Welcome back, James!</h2>
+                                <p>Buddy is doing great with the basic commands. Keep up the consistent work at home to see even better results!</p>
+                                <div class="row mt-4">
+                                    <div class="col-6">
+                                        <div class="stat-card" style="background: rgba(37, 109, 133, 0.05); border-radius: 12px;">
+                                            <h3 class="mb-0">12</h3>
+                                            <p class="text-secondary mb-0">Total Sessions</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="stat-card" style="background: rgba(37, 109, 133, 0.05); border-radius: 12px;">
+                                            <h3 class="mb-0">4</h3>
+                                            <p class="text-secondary mb-0">Milestones</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="booking" class="glass-card mb-4 animate-fade-up">
+                        <h3 class="mb-4">Book a Training Session</h3>
+                        <form class="row g-4">
+                            <div class="col-md-6">
+                                <label class="form-label">Training Module</label>
+                                <select class="form-control" style="padding: 12px; border-radius: 10px; border: 1px solid var(--border-color);">
+                                    <option>Puppy Foundations (Level 1)</option>
+                                    <option>Socialization (Level 2)</option>
+                                    <option>Advanced Obedience (Level 3)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Preferred Date</label>
+                                <input type="date" class="form-control" style="padding: 12px; border-radius: 10px; border: 1px solid var(--border-color);">
+                            </div>
+                            <div class="col-12 text-center mt-4">
+                                <button type="button" class="btn btn-primary" style="padding: 14px 40px;">Request Appointment</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div id="progress" class="glass-card mb-4 animate-fade-up">
+                        <h3 class="mb-3">Training Progress & Videos</h3>
+                        <p class="text-secondary mb-4">Upload a video of Buddy performing the "Stay" command for assessment.</p>
+                        
+                        <div class="video-upload-area mb-4">
+                            <div style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                            <h4>Select Video to Upload</h4>
+                            <p class="text-secondary">MP4, MOV supported (Maximum file size: 50MB)</p>
+                        </div>
+
+                        <h4 class="mb-3">Recent Submissions</h4>
+                        <div class="table-responsive">
+                            <table class="w-100">
+                                <thead>
+                                    <tr style="border-bottom: 1px solid var(--border-color); text-align: left;">
+                                        <th class="pb-3">File Name</th>
+                                        <th class="pb-3">Date Submitted</th>
+                                        <th class="pb-3">Status</th>
+                                        <th class="pb-3 text-end">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid var(--border-color);">
+                                        <td class="py-3">foundation_week2_sit.mp4</td>
+                                        <td class="py-3 text-secondary">Oct 15, 2026</td>
+                                        <td class="py-3"><span class="badge" style="background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 4px 10px;">Passed</span></td>
+                                        <td class="py-3 text-end"><a href="#" class="text-primary fw-bold">Feedback</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3">recall_practice_park.mov</td>
+                                        <td class="py-3 text-secondary">Oct 12, 2026</td>
+                                        <td class="py-3"><span class="badge" style="background: rgba(245, 158, 11, 0.1); color: var(--accent); padding: 4px 10px;">Under Review</span></td>
+                                        <td class="py-3 text-end"><span class="text-secondary">N/A</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="tips" class="glass-card animate-fade-up">
+                        <h3 class="mb-4">Quick Tips for Owners</h3>
+                        <div class="tip-item">
+                            <div style="font-size: 1.5rem; color: var(--accent);"><i class="fa-solid fa-lightbulb"></i></div>
+                            <div>
+                                <h5 class="mb-1">Consistent Cues</h5>
+                                <p class="mb-0 text-secondary">Always use the exact same hand signal with your verbal command.</p>
+                            </div>
+                        </div>
+                        <div class="tip-item">
+                            <div style="font-size: 1.5rem; color: var(--accent);"><i class="fa-solid fa-clock"></i></div>
+                            <div>
+                                <h5 class="mb-1">Keep it Short</h5>
+                                <p class="mb-0 text-secondary">Puppy brains tire quickly. Limit training sessions to 5-10 minutes.</p>
+                            </div>
+                        </div>
+                        <div class="tip-item">
+                            <div style="font-size: 1.5rem; color: var(--accent);"><i class="fa-solid fa-bone"></i></div>
+                            <div>
+                                <h5 class="mb-1">High-Value Rewards</h5>
+                                <p class="mb-0 text-secondary">Use treats like boiled chicken for difficult new tasks like recall.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="assets/js/theme-toggle.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.getElementById('header-sidebar-toggle');
+            const sidebar = document.getElementById('sidebar-menu');
+            
+            if (toggleBtn && sidebar) {
+                toggleBtn.addEventListener('click', () => {
+                    sidebar.classList.toggle('active');
+                    const icon = toggleBtn.querySelector('i');
+                    if (sidebar.classList.contains('active')) {
+                        icon.className = 'fa-solid fa-times';
+                    } else {
+                        icon.className = 'fa-solid fa-bars';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

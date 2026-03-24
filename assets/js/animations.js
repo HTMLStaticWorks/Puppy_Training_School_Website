@@ -50,4 +50,13 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         gsap.to('.animate-fade-up', { opacity: 1, y: 0, duration: 0.8, stagger: 0.1 });
     }
+
+    // Single fade-in for page elements
+    gsap.to('.animate-fade-in', {
+        opacity: 1,
+        duration: 1,
+        ease: 'power2.out',
+        delay: 0.2
+    });
 });
+
