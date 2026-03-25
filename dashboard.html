@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard - Puppy Training School</title>
+    
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
@@ -127,6 +129,8 @@
         @media (max-width: 991.98px) {
             .dashboard-sidebar {
                 display: none;
+                width: 100%;
+                margin-bottom: 2rem;
             }
             .dashboard-sidebar.active {
                 display: block;
@@ -140,6 +144,29 @@
                 width: auto !important;
                 gap: 8px !important;
             }
+            .dashboard-container .text-center-mobile {
+                text-align: center !important;
+            }
+            .dashboard-container .glass-card {
+                margin: 0 auto 1.5rem;
+                max-width: 100%;
+            }
+            .col-md-8 {
+                text-align: center !important;
+                margin-top: 1.5rem;
+            }
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            width: 100%;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .table-responsive table {
+            min-width: 600px;
         }
 
         .sidebar-icon-btn {
@@ -209,7 +236,7 @@
                 </div>
 
                 <div class="col-lg-9">
-                    <div id="overview" class="glass-card mb-4 animate-fade-up">
+                    <div id="overview" class="glass-card mb-4 animate-fade-up text-center-mobile">
                         <div class="row align-items-center">
                             <div class="col-md-4 text-center">
                                 <div class="progress-circle"></div>
@@ -237,12 +264,12 @@
                         </div>
                     </div>
 
-                    <div id="booking" class="glass-card mb-4 animate-fade-up">
+                    <div id="booking" class="glass-card mb-4 animate-fade-up text-center-mobile">
                         <h3 class="mb-4">Book a Training Session</h3>
-                        <form class="row g-4">
+                        <form class="row g-4 text-start">
                             <div class="col-md-6">
                                 <label class="form-label">Training Module</label>
-                                <select class="form-control" style="padding: 12px; border-radius: 10px; border: 1px solid var(--border-color);">
+                                <select class="form-control" style="padding: 12px; border-radius: 10px; border: 1px solid var(--border-color); width: 100%;">
                                     <option>Puppy Foundations (Level 1)</option>
                                     <option>Socialization (Level 2)</option>
                                     <option>Advanced Obedience (Level 3)</option>
@@ -250,15 +277,15 @@
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Preferred Date</label>
-                                <input type="date" class="form-control" style="padding: 12px; border-radius: 10px; border: 1px solid var(--border-color);">
+                                <input type="date" class="form-control" style="padding: 12px; border-radius: 10px; border: 1px solid var(--border-color); width: 100%;">
                             </div>
                             <div class="col-12 text-center mt-4">
-                                <button type="button" class="btn btn-primary" style="padding: 14px 40px;">Request Appointment</button>
+                                <button type="button" class="btn btn-primary" style="padding: 14px 40px; width: auto !important; min-width: 200px;">Request Appointment</button>
                             </div>
                         </form>
                     </div>
 
-                    <div id="progress" class="glass-card mb-4 animate-fade-up">
+                    <div id="progress" class="glass-card mb-4 animate-fade-up text-center-mobile">
                         <h3 class="mb-3">Training Progress & Videos</h3>
                         <p class="text-secondary mb-4">Upload a video of Buddy performing the "Stay" command for assessment.</p>
                         
@@ -297,7 +324,7 @@
                         </div>
                     </div>
 
-                    <div id="tips" class="glass-card animate-fade-up">
+                    <div id="tips" class="glass-card animate-fade-up text-center-mobile">
                         <h3 class="mb-4">Quick Tips for Owners</h3>
                         <div class="tip-item">
                             <div style="font-size: 1.5rem; color: var(--accent);"><i class="fa-solid fa-lightbulb"></i></div>
@@ -351,3 +378,4 @@
     </script>
 </body>
 </html>
+
