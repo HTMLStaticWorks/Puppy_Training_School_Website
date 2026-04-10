@@ -50,6 +50,8 @@
         .stat-card {
             text-align: center;
             padding: 1rem;
+            background: var(--bg-alt);
+            border-radius: 12px;
         }
         .video-upload-area {
             border: 2px dashed var(--border-color);
@@ -57,7 +59,7 @@
             padding: 2rem;
             text-align: center;
             transition: var(--transition);
-            background: rgba(37, 109, 133, 0.05);
+            background: var(--bg-alt);
             cursor: pointer;
         }
         .video-upload-area:hover {
@@ -72,7 +74,7 @@
             transition: var(--transition);
         }
         .tip-item:last-child { border-bottom: none; }
-        .tip-item:hover { background: rgba(37, 109, 133, 0.05); }
+        .tip-item:hover { background: var(--bg-alt); }
 
         .list-group-item {
             display: block;
@@ -83,7 +85,7 @@
             font-weight: 500;
         }
         .list-group-item:hover {
-            background: rgba(37, 109, 133, 0.05);
+            background: var(--bg-alt);
             color: var(--primary);
             padding-left: 1.75rem;
         }
@@ -94,10 +96,10 @@
         }
 
         .dashboard-container .glass-card {
-            padding: 1rem;
+            padding: 1.5rem;
             height: auto !important;
             min-height: auto !important;
-            display: block; /* Change from flex column to block to avoid unintended stretching from child flex items */
+            display: block;
         }
 
         .dashboard-sidebar .glass-card.p-0 {
@@ -107,7 +109,7 @@
         .sidebar-toggle-btn {
             background: var(--surface-color);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: var(--radius);
             padding: 14px;
             width: 100%;
             display: flex;
@@ -124,17 +126,29 @@
         .sidebar-toggle-btn:hover {
             box-shadow: var(--shadow);
             transform: translateY(-2px);
+            border-color: var(--primary);
         }
 
         @media (max-width: 991.98px) {
             .dashboard-sidebar {
-                display: none;
-                width: 100%;
-                margin-bottom: 2rem;
+                position: fixed;
+                top: 0;
+                left: -320px;
+                width: 300px;
+                height: 100vh;
+                background: var(--bg-color);
+                z-index: 1050;
+                padding: 2rem 1.5rem;
+                overflow-y: auto;
+                transition: left 0.3s ease-in-out;
+                margin-bottom: 0;
+                display: block !important;
+                border-right: 1px solid var(--border-color);
             }
             .dashboard-sidebar.active {
-                display: block;
-                animation: sideFadeIn 0.3s ease-out;
+                left: 0;
+                animation: none;
+                box-shadow: 5px 0 15px rgba(0,0,0,0.3);
             }
             .nav-actions {
                 display: flex !important;
@@ -248,13 +262,13 @@
                                 <p>Buddy is doing great with the basic commands. Keep up the consistent work at home to see even better results!</p>
                                 <div class="row mt-4">
                                     <div class="col-6">
-                                        <div class="stat-card" style="background: rgba(37, 109, 133, 0.05); border-radius: 12px;">
+                                        <div class="stat-card">
                                             <h3 class="mb-0">12</h3>
                                             <p class="text-secondary mb-0">Total Sessions</p>
                                         </div>
                                     </div>
                                     <div class="col-6">
-                                        <div class="stat-card" style="background: rgba(37, 109, 133, 0.05); border-radius: 12px;">
+                                        <div class="stat-card">
                                             <h3 class="mb-0">4</h3>
                                             <p class="text-secondary mb-0">Milestones</p>
                                         </div>
@@ -362,6 +376,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const toggleBtn = document.getElementById('header-sidebar-toggle');
             const sidebar = document.getElementById('sidebar-menu');
+            const links = sidebar ? sidebar.querySelectorAll('.list-group-item') : [];
             
             if (toggleBtn && sidebar) {
                 toggleBtn.addEventListener('click', () => {
@@ -372,6 +387,16 @@
                     } else {
                         icon.className = 'fa-solid fa-bars';
                     }
+                });
+
+                // Close sidebar when a link is clicked on mobile
+                links.forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (window.innerWidth < 992 && sidebar.classList.contains('active')) {
+                            sidebar.classList.remove('active');
+                            toggleBtn.querySelector('i').className = 'fa-solid fa-bars';
+                        }
+                    });
                 });
             }
         });

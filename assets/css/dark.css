@@ -1,14 +1,27 @@
 [data-theme="dark"] {
-    --bg-color: #0F172A;
-    --surface-color: #162032;
-    --text-primary: #E5E7EB;
-    --text-secondary: #9CA3AF;
-    --border-color: #1E293B;
-    
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
-    --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
-    
+    --bg-color: #000000;
+    --surface-color: #121212;
+    --text-primary: #FFFFFF;
+    --text-secondary: #D1D5DB;
+    --border-color: #1F2937;
+
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.6), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+
     --accent: #FBBF24;
+    --bg-alt: rgba(255, 255, 255, 0.05);
+    --primary: #4FA8C4;
+    /* Lighter primary for dark mode contrast */
+    --primary-hover: #6BCAE6;
+}
+
+[data-theme="dark"] .hero-section,
+[data-theme="dark"] .hero-2 {
+    background-color: #000000 !important;
+}
+
+[data-theme="dark"] .hero-2::before {
+    background: rgba(0, 0, 0, 0.8) !important;
 }
 
 [data-theme="dark"] .btn-outline {
@@ -26,14 +39,5 @@
 }
 
 [data-theme="dark"] .hero-section {
-    position: relative;
-}
-
-[data-theme="dark"] .hero-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(15, 23, 42, 0.5);
-    z-index: 1;
-    pointer-events: none;
+    background-color: #000000 !important;
 }

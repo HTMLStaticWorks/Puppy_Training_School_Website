@@ -31,22 +31,27 @@
                 <div class="row">
                     <div class="col-sm-6 form-group mb-3">
                         <label class="form-label">First Name</label>
-                        <input type="text" class="form-control" placeholder="John" style="padding: 14px; border-radius: 12px;" required>
+                        <input type="text" class="form-control" placeholder="John" required>
                     </div>
                     <div class="col-sm-6 form-group mb-3">
                         <label class="form-label">Last Name</label>
-                        <input type="text" class="form-control" placeholder="Doe" style="padding: 14px; border-radius: 12px;" required>
+                        <input type="text" class="form-control" placeholder="Doe" required>
                     </div>
                 </div>
                 
                 <div class="form-group mb-4">
                     <label class="form-label">Email Address</label>
-                    <input type="email" class="form-control" placeholder="name@example.com" style="padding: 14px; border-radius: 12px;" required>
+                    <input type="email" class="form-control" placeholder="name@example.com" required>
                 </div>
                 
                 <div class="form-group mb-4">
                     <label class="form-label">Password</label>
-                    <input type="password" class="form-control" placeholder="••••••••" style="padding: 14px; border-radius: 12px;" required>
+                    <input type="password" class="form-control" placeholder="••••••••" required>
+                </div>
+                
+                <div class="form-group mb-4">
+                    <label class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" placeholder="••••••••" required>
                 </div>
 
                 <div class="mb-4">
@@ -57,26 +62,31 @@
                 </div>
 
                 <div class="text-center mb-5 mt-2">
-                    <button type="button" class="btn btn-primary" style="padding: 16px 40px; border-radius: 12px; font-size: 1.1rem; min-width: 220px;">Sign Up</button>
+                    <button type="button" class="btn btn-primary btn-lg" style="min-width: 220px;">Sign Up</button>
                 </div>
 
                 <div class="auth-divider">
                     <span>OR</span>
                 </div>
 
-                <div class="text-center mb-4">
-                    <button type="button" class="social-auth-btn" style="width: auto; display: inline-flex; min-width: 220px; margin: 0 auto;">
+                <div class="d-flex flex-column gap-3 mb-4">
+                    <button type="button" class="social-auth-btn" style="width: auto; display: inline-flex; min-width: 240px; margin: 0 auto;">
                         <img src="https://www.gstatic.com/images/branding/product/1x/googleg_48dp.png" alt="Google" style="width: 20px; height: 20px;">
-                        Google Account
+                        Continue with Google
+                    </button>
+                    <button type="button" class="social-auth-btn" style="width: auto; display: inline-flex; min-width: 240px; margin: 0 auto;">
+                        <i class="fa-brands fa-apple" style="font-size: 20px;"></i>
+                        Continue with Apple
                     </button>
                 </div>
 
+                <div class="text-center mt-5 pt-3" style="border-top: 1px solid var(--border-color);">
+                    <p class="text-secondary mb-0">
+                        Already have an account? <a href="login.html" style="color: var(--primary); font-weight: 600;">Log in here</a>
+                    </p>
+                </div>
             </form>
         </div>
-
-        <p class="text-center text-secondary mt-5">
-            Already have an account? <a href="login.html" style="color: var(--primary); font-weight: 600;">Log in here</a>
-        </p>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
