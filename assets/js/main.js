@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentDir = localStorage.getItem('direction') || 'ltr';
     htmlTag.setAttribute('dir', currentDir);
     if(rtlToggle) {
-        rtlToggle.textContent = currentDir === 'ltr' ? 'AR' : 'EN';
+        rtlToggle.textContent = currentDir === 'ltr' ? 'RTL' : 'LTR';
     }
 
     if (rtlToggle) {
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             htmlTag.setAttribute('dir', newDir);
             localStorage.setItem('direction', newDir);
-            rtlToggle.textContent = newDir === 'ltr' ? 'AR' : 'EN';
+            rtlToggle.textContent = newDir === 'ltr' ? 'RTL' : 'LTR';
 
             if(typeof gsap !== 'undefined') {
                 gsap.from("body", { opacity: 0, duration: 0.5 });
