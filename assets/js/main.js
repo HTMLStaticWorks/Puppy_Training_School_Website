@@ -29,16 +29,42 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Dropdown toggle for mobile
+    // Dropdown toggle
     const dropdowns = document.querySelectorAll('.dropdown');
     dropdowns.forEach(dd => {
         const link = dd.querySelector('.nav-link');
         link.addEventListener('click', (e) => {
-            if (window.innerWidth <= 1024) {
-                e.preventDefault();
-                dd.classList.toggle('open');
-            }
+            // Prevent navigation for top-level dropdown items
+            e.preventDefault();
+            e.stopPropagation();
+
+            // Close other dropdowns
+            dropdowns.forEach(other => {
+                if (other !== dd) other.classList.remove('open');
+            });
+
+            dd.classList.toggle('open');
         });
+    });
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', () => {
+        dropdowns.forEach(dd => dd.classList.remove('open'));
+    });
+
+    // Handle window resize to clean up mobile states
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 1024) {
+            navLinks.classList.remove('active');
+            dropdowns.forEach(dd => dd.classList.remove('open'));
+            
+            // Move actions back to their original place if they were moved
+            const navContainer = document.querySelector('.navbar .container');
+            const hamburger = document.querySelector('.hamburger');
+            if (navActions && navContainer && navActions.parentElement === navLinks) {
+                navContainer.insertBefore(navActions, hamburger);
+            }
+        }
     });
 
     // Active nav link
