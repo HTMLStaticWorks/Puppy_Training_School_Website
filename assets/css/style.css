@@ -553,6 +553,12 @@ img {
 }
 
 @media (max-width: 1024px) {
+    .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 1100;
+    }
+
     .nav-links {
         display: none;
         position: absolute;
@@ -571,23 +577,25 @@ img {
     }
 
     .nav-links.active {
-        display: flex;
+        display: flex !important;
         overflow-y: auto;
-        max-height: calc(100vh - 80px);
+        max-height: 80vh;
     }
 
     .nav-item {
         width: 100%;
+        display: block;
     }
 
     .nav-link {
-        padding: 0.8rem 0;
+        padding: 1rem 1.5rem !important;
         height: auto;
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 1px solid rgba(0,0,0,0.05);
+        border-bottom: 1px solid var(--border-color);
+        color: var(--text-primary);
     }
 
     .nav-link:last-child {
