@@ -253,12 +253,6 @@
                 <i class="fa-solid fa-paw"></i> PuppySchool
             </a>
             <div class="nav-actions">
-                <button id="rtl-toggle" class="rtl-toggle-btn">RTL</button>
-                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
-                    <i class="fa-solid fa-moon dark-icon"></i>
-                    <i class="fa-solid fa-sun light-icon"></i>
-                </button>
-                
                 <div class="dropdown">
                     <button class="profile-icon-btn" id="profile-btn">
                         <img src="https://i.pravatar.cc/150?u=james" alt="Profile">
@@ -283,12 +277,6 @@
             <div class="row gy-4">
                 <div class="col-lg-3">
                     <div class="dashboard-sidebar" id="sidebar-menu">
-                        <div class="glass-card mb-4 text-center">
-                            <div style="width: 80px; height: 80px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1rem; border: 4px solid var(--surface-color); box-shadow: var(--shadow);">JS</div>
-                            <h3 style="margin-bottom: 0.25rem;">James Smith</h3>
-                            <p class="text-secondary" style="font-size: 0.9rem;">Member since Oct 2026</p>
-                            <span class="badge" style="background: rgba(245, 158, 11, 0.1); color: var(--accent); padding: 4px 12px; border-radius: 20px;">Premium Member</span>
-                        </div>
                         
                         <div class="glass-card p-0 overflow-hidden">
                             <div class="list-group">
@@ -297,6 +285,19 @@
                                 <a href="#progress" class="list-group-item">Training Progress</a>
                                 <a href="#tips" class="list-group-item">Tips Library</a>
                                 <a href="login.html" class="list-group-item text-danger" style="border-top: 1px solid var(--border-color);"><i class="fa-solid fa-right-from-bracket me-2"></i> Logout</a>
+                            </div>
+                        </div>
+
+                        <div class="glass-card mt-4 p-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-secondary fw-medium" style="font-size: 0.9rem;">Display Settings</span>
+                                <div class="d-flex gap-2">
+                                    <button id="rtl-toggle" class="rtl-toggle-btn">RTL</button>
+                                    <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+                                        <i class="fa-solid fa-moon dark-icon"></i>
+                                        <i class="fa-solid fa-sun light-icon"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>

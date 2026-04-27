@@ -32,19 +32,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // Dropdown toggle
     const dropdowns = document.querySelectorAll('.dropdown');
     dropdowns.forEach(dd => {
-        const link = dd.querySelector('.nav-link');
-        link.addEventListener('click', (e) => {
-            // Prevent navigation for top-level dropdown items
-            e.preventDefault();
-            e.stopPropagation();
+        const link = dd.querySelector('.nav-link') || dd.querySelector('button');
+        if (link) {
+            link.addEventListener('click', (e) => {
+                // Prevent navigation for top-level dropdown items
+                if (link.classList.contains('nav-link')) {
+                    e.preventDefault();
+                }
+                e.stopPropagation();
 
-            // Close other dropdowns
-            dropdowns.forEach(other => {
-                if (other !== dd) other.classList.remove('open');
+                // Close other dropdowns
+                dropdowns.forEach(other => {
+                    if (other !== dd) other.classList.remove('open');
+                });
+
+                dd.classList.toggle('open');
             });
-
-            dd.classList.toggle('open');
-        });
+        }
     });
 
     // Close dropdowns when clicking outside
