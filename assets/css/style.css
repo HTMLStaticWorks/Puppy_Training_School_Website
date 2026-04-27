@@ -561,15 +561,33 @@ img {
         width: 100%;
         background: var(--surface-color);
         flex-direction: column;
-        padding: 2rem;
-        box-shadow: var(--shadow);
-        gap: 1.5rem;
+        padding: 1.5rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        gap: 0;
+        z-index: 1100;
+        height: auto;
     }
 
     .nav-links.active {
         display: flex;
         overflow-y: auto;
-        max-height: 80vh;
+        max-height: 85vh;
+    }
+
+    .nav-item {
+        width: 100%;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-item:last-child {
+        border-bottom: none;
+    }
+
+    .nav-link {
+        padding: 1rem 0;
+        width: 100%;
+        height: auto;
+        display: block;
     }
 
     .hamburger {
